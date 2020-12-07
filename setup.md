@@ -3,58 +3,149 @@ layout: page
 title: Setup
 ---
 
-# Overview
+## Overview
 
-This workshop is designed to be run on your local machine. First, you will need to download the data we use in the workshop. Then, you need to set up your machine to analyze and process geospatial data. We provide instructions below to either install all components manually (option A), or to use a Docker image that provides all the software and dependencies needed (option B).
+This workshop is designed to be run on your own computer. 
+First, you need to download the data we use in the workshop. 
+Then, you need to set up your computer by installing the software needed to analyze and process geospatial data.
+
+Instructions are provided for installing all software 
+on Windows, macOS, and Linux systems.
+
+Workshop participants who use Docker and wish to use a Docker image 
+made for the workshop will find 
+[advanced Docker installation instructions](#docker-installation-advanced) below.
 
 ## Data
 
 You can download all of the data used in this workshop by clicking
-[this download link](https://ndownloader.figshare.com/articles/2009586/versions/10). The file is 218.2 MB.
+[this download link](https://ndownloader.figshare.com/files/23135981). 
+The file is 58 MB.
 
-Clicking the download link will automatically download all of the files to your default download directory as a single compressed
-(`.zip`) file. To expand this file, double click the folder icon in your file navigator application (for Macs, this is the Finder
-application).
+The data will download as a single compressed (`.zip`) file. 
+Expand/unzip this file so that the data folder is on your 
+desktop or another convenient location.
 
 For a full description of the data used in this workshop see the [data page](data).
 
-## Option A: Local Installation
+## Software Installation
 
-### Software
+The table below summarizes all the software that must be installed for the workshop. 
+Below the table we provide detailed instructions for installing each software for 
+Windows, macOS, and Linux.
 
-| Software | Install | Manual | Available for | Description |
+At points, the instructions assume some familiarity with the software installation process.
+As there are many different operating systems and environments, 
+the installation on your computer may vary from the instructions.
+
+| Install | Description | Website | Available for |
 | -------- | ------------ | ------ | ------------- | ----------- |
-| [GDAL](http://www.gdal.org) | [Link](https://gdal.org/download.html) | [Link](https://gdal.org) | Linux, MacOS, Windows | Geospatial model for reading and writing a variety of formats |
-| [GEOS](https://trac.osgeo.org/geos) | [Link](https://trac.osgeo.org/geos) | [Link](http://geos.osgeo.org/doxygen/) | Linux, MacOS, Windows | Geometry models and operations |
-| [PROJ.4](http://proj4.org) | [Link](http://proj4.org/install.html)| [Link](http://proj4.org/index.html)| Linux, MacOS, Windows | Coordinate reference system transformations |
-| [R](https://www.r-project.org) | [Link](https://cloud.r-project.org) | [Link](https://cloud.r-project.org) | Linux, MacOS, Windows | Software environment for statistical and scientific computing |
-| [RStudio](https://www.rstudio.com) | [Link](https://www.rstudio.com/products/rstudio/download/#download) | | Linux, MacOS, Windows | GUI for R |
-| [UDUNITS](https://www.unidata.ucar.edu/software/udunits/) | [Link](https://www.unidata.ucar.edu/downloads/udunits/index.jsp) | [Link](https://www.unidata.ucar.edu/software/udunits/#documentation) | Linux, MacOS, Windows | Unit conversions |
+| [R](#r) | free software environment for statistical computing and graphics. | [r-project.org](https://www.r-project.org) | Windows, macOS, Linux |
+| [RStudio](#rstudio) | free integrated development environment (IDE) for the R programming language | [rstudio.com](https://www.rstudio.com) | Windows, macOS, Linux |
+| [GDAL](#gdal-geos-and-proj4) | Geospatial model for reading and writing a variety of formats | [gdal.org](http://www.gdal.org) | Windows, macOS, Linux |
+| [GEOS](#gdal-geos-and-proj4) | Geometry models and operations | [trac.osgeo.org/geos](https://trac.osgeo.org/geos)  | Windows, macOS, Linux |
+| [PROJ.4](#gdal-geos-and-proj4) | Coordinate reference system transformations | [proj4.org](http://proj4.org)| Windows, macOS, Linux |
+| [UDUNITS](#udunits) |Unit conversions | [unidata.ucar.edu/software/udunits/](https://www.unidata.ucar.edu/software/udunits/) | Windows, macOS, Linux | 
 
-We provide quick instructions below for installing the various software needed for this workshop. At points, they assume familiarity with the command line and with installation in general. As there are different operating systems and many different versions of operating systems and environments, these may not work on your computer. If an installation doesn't work for you, please refer to the installation instructions for that software listed in the table above.
+### R
 
-
-### GDAL, GEOS, and PROJ.4
-
-The installation of the geospatial libraries GDAL, GEOS, and PROJ.4 varies significantly based on operating system. These are all dependencies for `sf`, the `R` package that we will be using for spatial data operations throughout this workshop.
+Participants who do not already have R installed should download and install it.
 
 > ## Windows
 >
->To install the geospatial libraries, install the latest version [RTools](https://cran.r-project.org/bin/windows/Rtools/)
+>To install R, Windows users should navigate to the [CRAN download page](https://cloud.r-project.org) 
+and click `Download R for Windows`. 
+Click  the `base` subdirectory. 
+>
+>Clicking on `Download R 4.x.x for Windows` will download an `.exe` executable installer. 
+>Run the installer.
+>The installer will guide you through the remaining steps.
+>
+{: .solution}
+
+> ## macOS
+>
+>To install R, macOS users should navigate to the [CRAN download page](https://cloud.r-project.org) and click `Download R for (Mac) OS X`. 
+>
+>A `.pkg` file containing the necessary components of base R can be downloaded by clicking on the first available link (this will be the most recent), which will read `R-4.x.x.pkg`.
+>
+>When the file finishes downloading, double click it to run the installer.
+> The installer will guide you through the remaining steps.
+>
+{: .solution}
+
+> ## Linux
+>
+>Most Linux users can install R using the package management software on their computer. R is a part of many linux distributions and may already be installed.
+>
+>Linux users can also click "Download R for Linux" from the [CRAN download page](https://cloud.r-project.org). Instructions for a number of different Linux distributions are available.
+>
+{: .solution}
+
+### RStudio
+RStudio is a **GUI** for using R. Participants who do not already have R installed should download and install it.
+
+> ## Windows
+>
+>Navigate to the [RStudio download page](https://rstudio.com/products/rstudio/download/#download). 
+Download the executable (`.exe`) installer by clicking the button labeled `Download RStudio for Windows`. 
+>Run the installer.
+>The installer will guide you through the remaining steps.
+>
+{: .solution}
+
+> ## macOS
+>
+>From the [RStudio download page](https://rstudio.com/products/rstudio/download/#download),
+>download the disk image (`.dmg`) installer by clicking the button labeled `Download RStudio for mac`.
+>Mount the disk image by double clicking it and drag RStudio to your applications directory.
+>
+{: .solution}
+
+> ## Linux
+>
+>Most Linux users can install RStudio using the package management software on their computer.
+>
+>The [RStudio download page](https://www.rstudio.com/products/rstudio/download/) has installers for some of the most popular Linux distributions.
+>
+{: .solution}
+
+### GDAL, GEOS, and PROJ.4
+
+The installation of the geospatial libraries GDAL, GEOS, and PROJ.4 
+varies significantly based on operating system. 
+These are all dependencies for `sf`, 
+the R package that we will be using for spatial data operations throughout this workshop.
+
+> ## Windows
+>
+>Windows users should install the latest version of `Rtools`.
+>
+>Navigate to the [CRAN page](https://cran.r-project.org/bin/windows/Rtools/) for Rtools and download the appropriate `.exe` executable installer.
+>
+>Follow the instructions on the page to add Rtools to your *PATH*.
 >
 {: .solution}
 
 > ## macOS - Install with Packages (Beginner)
 >
-> The simplest way to install these geospatial libraries is to install the latest version of [Kyng Chaos's pre-built package](http://www.kyngchaos.com/software/frameworks) for GDAL Complete. Be aware that several other libraries are also installed, including the UnixImageIO, SQLite3, and `NumPy`.
+> The simplest way to install these geospatial libraries is to install the latest version of 
+>[Kyng Chaos's pre-built package](http://www.kyngchaos.com/software/frameworks) for GDAL Complete. 
+>Be aware that several other libraries are also installed, 
+>including the UnixImageIO, SQLite3, and NumPy.
 >
-> After downloading the package in the link above, you will need to double-click the cardbord box icon to complete the installation. Depending on your security settings, you may get an error message about "unidentified developers". You can enable the installation by following [these instructions](https://kb.wisc.edu/page.php?id=25443) for installing programs from unidentified developers.
+> After downloading the package in the link above, 
+>you will need to double-click the cardbord box icon to complete the installation. 
+>Depending on your security settings, you may get an error message about "unidentified developers". 
+>You can enable the installation by following [these instructions](https://kb.wisc.edu/page.php?id=25443) for 
+>installing programs from unidentified developers.
 >
 {: .solution}
 
 > ## macOS - Install with Homebrew (Advanced)
 >
-> Alternatively, participants who are comfortable with the command line can install the geospatial libraries individually using [homebrew](https://brew.sh):
+> Alternatively, participants who are comfortable with the command line can install the geospatial libraries individually 
+>using [homebrew](https://brew.sh):
 >
 >~~~
 >$ brew tap osgeo/osgeo4mac && brew tap --repair
@@ -68,7 +159,11 @@ The installation of the geospatial libraries GDAL, GEOS, and PROJ.4 varies signi
 
 > ## Linux
 >
-> Steps for installing the geospatial libraries will vary based on which form of Linux you are using. These instructions are adapted from the [`sf` package's `README`](https://github.com/r-spatial/sf).
+> Steps for installing the geospatial libraries will vary based on which form of Linux you are using. 
+>These instructions are adapted from the [sf package's README](https://github.com/r-spatial/sf).
+>
+>Users who already have QGIS installed may find that all the geospatial packages are installed already.
+>You can confirm and update specific packages in your system's package manager.
 >
 > For **Ubuntu**:
 >
@@ -93,17 +188,23 @@ The installation of the geospatial libraries GDAL, GEOS, and PROJ.4 varies signi
 >~~~
 >{: .language-bash}
 >
-> For **Debian**: The [rocker geospatial](https://github.com/rocker-org/geospatial) Dockerfiles may be helpful. Ubuntu Dockerfiles are found [here](https://github.com/r-spatial/sf/tree/master/inst/docker). These may be helpful to get an idea of the commands needed to install the necessary dependencies.
+> For **Debian**: The [rocker geospatial](https://github.com/rocker-org/geospatial) Dockerfiles may be helpful. 
+>Ubuntu Dockerfiles are found [here](https://github.com/r-spatial/sf/tree/master/inst/docker). 
+>These may be helpful to get an idea of the commands needed to install the necessary dependencies.
 >
 {: .solution}
 
 ### UDUNITS
 
-Linux users will have to install UDUNITS separately. Like the geospatial libraries discussed above, this is a dependency for the `R` package `sf`. Due to conflicts, it does not install properly on Linux machines when installed as part of the `sf` installation process. It is therefore necessary to install it using the command line ahead of time.
+Linux users will have to install UDUNITS separately.
+Like the geospatial libraries discussed above, this is a dependency for the R package `sf`.
+Due to conflicts, it does not install properly on Linux machines when installed as part of the `sf` installation process.
+It is therefore necessary to install it using the command line ahead of time.
 
 > ## Linux
 >
-> Steps for installing the geospatial will vary based on which form of Linux you are using. These instructions are adapted from the [`sf` package's `README`](https://github.com/r-spatial/sf).
+> Steps for installing the geospatial will vary based on which form of Linux you are using.
+These instructions are adapted from the [sf package's README](https://github.com/r-spatial/sf).
 >
 > For **Ubuntu**:
 >
@@ -135,52 +236,31 @@ Linux users will have to install UDUNITS separately. Like the geospatial librari
 >
 {: .solution}
 
-
-### R
-
-Participants who do not already have `R` installed should download and install it.
-
-> ## Windows
->
->To install `R`, Windows users should select "Download R for Windows" from RStudio and CRAN's [cloud download page](https://cloud.r-project.org), which will automatically detect a CRAN mirror for you to use. Select the `base` subdirectory after choosing the Windows download page. A `.exe` executable file containing the necessary components of base R can be downloaded by clicking on "Download R 3.x.x for Windows".
->
-{: .solution}
-
-> ## macOS
->
->To install `R`, macOS users should select "Download R for (Mac) OS X" from RStudio and CRAN's [cloud download page](https://cloud.r-project.org), which will automatically detect a CRAN mirror for you to use. A `.pkg` file containing the necessary components of base R can be downloaded by clicking on the first available link (this will be the most recent), which will read `R-3.x.x.pkg`.
->
-{: .solution}
-
-> ## Linux
->
->To install `R`, Linux users should select "Download R for Linux" from RStudio and CRAN's [cloud download page](https://cloud.r-project.org), which will automatically detect a CRAN mirror for you to use. Instructions for a number of different Linux operating systems are available.
->
-{: .solution}
-
-### RStudio
-RStudio is a GUI for using `R` that is available for Windows, macOS, and various Linux operating systems. It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/). You will need the **free** Desktop version for your computer. *In order to address issues with `ggplot2`, learners and instructors should run a recent version of RStudio (v1.2 or greater).*
-
 ### R Packages
 
-The following `R` packages are used in the various geospatial lessons.
+**R Packages** are collections of functions and reproducible code.
+The  packages here will be used in the worshop and must be installed:
 
-* [`dplyr`](https://cran.r-project.org/package=dplyr)
-* [`ggplot2`](https://cran.r-project.org/package=ggplot2)
-* [`raster`](https://cran.r-project.org/package=raster)
-* [`rgdal`](https://cran.r-project.org/package=rgdal)
-* [`rasterVis`](https://cran.r-project.org/package=rasterVis)
-* [`remotes`](https://cran.r-project.org/package=remotes)
-* [`sf`](https://cran.r-project.org/package=sf)
+* [dplyr](https://cran.r-project.org/package=dplyr)
+* [ggplot2](https://cran.r-project.org/package=ggplot2)
+* [raster](https://cran.r-project.org/package=raster)
+* [rgdal](https://cran.r-project.org/package=rgdal)
+* [rasterVis](https://cran.r-project.org/package=rasterVis)
+* [sf](https://cran.r-project.org/package=sf)
 
-To install these packages in RStudio, do the following:  
-1\. Open RStudio by double-clicking the RStudio application icon. You should see
-something like this:
+macOS users may be prompted to install
+[Xcode Developer tools](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+Follow the prompt to install the Xcode or install it from the Mac App Store before continuing.
+
+To install these packages in RStudio:  
+
+1\. Open RStudio. 
+You should see something like this:
 
 ![RStudio layout](/fig/01-rstudio.png)
 
 
-2\. Type the following into the console and hit enter.
+2\. Type the following text into the console and hit <kbd>Return/Enter</kbd>.
 
 ~~~
 install.packages(c("dplyr", "ggplot2", "raster", "rgdal", "rasterVis", "sf"))
@@ -212,17 +292,19 @@ The downloaded binary packages are in
 
 You are now ready for the workshop!
 
-## Option B: Docker
+## Docker Installation (Advanced)
 
-[Docker](https://www.docker.com) provides developers with a means for creating interactive [containers](https://docs.docker.com/glossary/?term=container) that contain pre-installed software. A selection of pre-installed software in Docker is called an [image](https://docs.docker.com/glossary/?term=image). An image can be downloaded and used to create a local container, allowing end-users to get software up and running quickly. This is particularly useful when a local installation of the software could be complex and time consuming. For `R` users, a Docker image can be used to create a virtual installation of `R` and RStudio that can be run through your web browser.
+Use this advanced option only if you are familiar with Docker and using Docker Images. If you are having trouble with option A, please contact the workshop organizers.
 
-This option involves downloading an Docker image that contains an installation of `R`, RStudio Server, all of the necessary dependencies listed above, and almost all of the `R` packages used in the geospatial lessons. You will need to install the appropriate version of Docker's Community Edition software and then download and use the `rocker/geospatial` Docker image to create a container that will allow you to use `R`, RStudio, and all the required GIS tools without installing any of them locally.
+[Docker](https://www.docker.com) provides developers with a means for creating interactive [containers](https://docs.docker.com/glossary/?term=container) that contain pre-installed software. A selection of pre-installed software in Docker is called an [image](https://docs.docker.com/glossary/?term=image). An image can be downloaded and used to create a local container, allowing end-users to get software up and running quickly. This is particularly useful when a local installation of the software could be complex and time consuming. For R users, a Docker image can be used to create a virtual installation of R and RStudio that can be run through your web browser.
+
+This option involves downloading an Docker image that contains an installation of R, RStudio Server, all of the necessary dependencies listed above, and almost all of the R packages used in the geospatial lessons. You will need to install the appropriate version of Docker's Community Edition software and then download and use the `rocker/geospatial` Docker image to create a container that will allow you to use R, RStudio, and all the required GIS tools without installing any of them locally.
 
 Once up and running - you'll have full access to RStudio right from your browser:
 
 ![](/fig/docker.png)
 
-Please be aware that the `R` package `rasterVis` is not included in the `rocker/geospatial` Docker image. If your instructor teaches with this package then you will need to install this `R` package yourself. All other `R` packages will already be installed for you.
+Please be aware that the R package `rasterVis` is not included in the `rocker/geospatial` Docker image. If your instructor teaches with this package then you will need to install this R package yourself. All other R packages will already be installed for you.
 
 > ## Downloading and Installing Docker Community Edition
 >
@@ -237,7 +319,7 @@ Please be aware that the `R` package `rasterVis` is not included in the `rocker/
 > ## Using the `rocker/geospatial` Docker Image via the Command Line
 >
 > #### Download and Set-up
-> Once Docker is installed and up and running, you will need to open your computer's command line terminal. We'll use the terminal to download [`rocker/geospatial`](https://github.com/rocker-org/geospatial), a pre-made Docker image that contains an installation of `R`, RStudio Server, all of the necessary dependencies, and all but one of the `R` packages needed for this workshop.
+> Once Docker is installed and up and running, you will need to open your computer's command line terminal. We'll use the terminal to download [`rocker/geospatial`](https://github.com/rocker-org/geospatial), a pre-made Docker image that contains an installation of R, RStudio Server, all of the necessary dependencies, and all but one of the R packages needed for this workshop.
 >
 > You need to have already installed Docker Community Edition (see instructions above) before proceeding. Once you have Docker downloaded and installed, make sure Docker is running and then enter the following command into the terminal to download the `rocker/geospatial` image:
 >
@@ -351,3 +433,5 @@ Please be aware that the `R` package `rasterVis` is not included in the `rocker/
 >{: .language-bash}
 >
 {: .solution}
+
+You are now ready for the workshop!
